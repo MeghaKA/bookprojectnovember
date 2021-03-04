@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Create A New Book</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+
+
+<!--    {%for field in form%}-->
+<!--    -->
+<!--    {{field.label_tag}}-->
+<!--    {{field}}-->
+<!--    {% endfor %}-->
+    <input type="submit" value="create">
+
+
+
+</form>
+<table>
+
+    <tr>
+        <td>Bookid</td>
+        <td>Book_name</td>
+        <td>pages</td>
+        <td>price</td>
+        <td>Author</td>
+    </tr>
+    {%for Book in Books%}
+    <tr>
+
+        <td>{{Book.id}}</td>
+        <td>{{Book.Book_name}}</td>
+        <td>{{Book.pages}}</td>
+        <td>{{Book.price}}</td>
+        <td>{{Book.author}}</td>
+        <td><a href="{%url 'view' Book.id%}">view</a> </td>
+        <td><a href="{%url 'update' Book.id%}">Edit</a> </td>
+        <td><a href="{%url 'delete' Book.id%">Delete</a> </td>
+
+    </tr>
+{% endfor %}
+</table>
+<!--superuser creation-->
+<!--form validation-->
+
+<!--{{Books}}-->
+</body>
+</html>
